@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(./fonts/inconsolata.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(./fonts/inconsolata2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.navbar {
+  font-family: Inconsolata;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6.6rem;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-row {
+  margin-bottom: 0;
+}
+
+.nav-col {
+  height: 64px;
+}
+
+.nav-button {
+  font-size: 1.5rem;
+  margin-top: 1px;
+  height: 100%;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.7rem;
+  margin-bottom: 0;
+}
+
+#desc {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1.7rem;
+  margin-bottom: 0;
+}
+
+#first-image {
+  margin-left: -17%;
+  width: 100vw;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body ng-controller="CatalogCtrl as catalogCtrl">
+
+    <nav>
+      <div class="nav-wrapper #eeeeee grey lighten-3">
+        <a href="#" class="brand-logo navtext">SnapShop</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html" class="navtext">Cart</a></li>
+          <li><a href="badges.html" class="navtext">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col s7">
+
+        <div class="row">
+          <div class="col s8">
+            <div class="input-field col s6" id="searchbar">
+              <input placeholder="Search" type="text" class="validate">
+            </div>
+          </div>
+
+          <div class="col s4">
+            <div class="input-field col s12">
+              <select>
+                <option value="1" selected>Sort By Name</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="camera-container">
+          <!-- Make one of these for each camera -->
+          <div class="row" ng-repeat="camera in catalogCtrl.cameras">
+            <div class="col s5 image-container">
+              <div class="card">
+                <div class="card-image">
+                  <img src="lol">
+                </div>
+              </div>
+            </div>
+            <div class="col s7">
+              <div class="card">
+                <div class="card-content black-text">
+                  <span class="card-title">{{ camera.name }}</span>
+                  <p>Price: {{ camera.price }}</p>
+                  <p>Rating: {{ camera.rating }}</p>
+                </div>
+                <div class="card-action">
+                  <a>Add to cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col s5">
+        <div class="card #eeeeee grey lighten-3">
+          <div class="card-content black-text">
+            <div class="row">
+              <span class="card-title">Cart</span>
+            </div>
+
+            <!-- Make one for each camera in cart -->
+            <div class="row">
+              <div class="col s1">#</div>
+              <div class="col s11">Camera Name</div>
+            </div>
+
+            <div class="row">
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Subtotal</td>
+                    <td>$0.00</td>
+                  </tr>
+                  <tr>
+                    <td>Tax</td>
+                    <td>$0.00</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>$0.00</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="checkout.html">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/catalog.js"></script>
+  </body>
+</html>
