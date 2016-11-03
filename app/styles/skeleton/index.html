@@ -8,8 +8,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/index.css">
@@ -17,7 +15,65 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 
   </head>
-  <body>
+  <body class="noselect">
+
+    <div class="open-sidebar">
+      <p>Cart</p>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-nav">
+
+        <div class="row cart-row" id="cart-title">Cart</div>
+
+        <div class="row cart-row" id="subtotal">
+          <div class="six columns cart-col">
+            <p>Subtotal: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- Subtotal goes here -->
+            <p></p>
+          </div>
+        </div>
+
+        <div class="row cart-row" id="tax">
+          <div class="six columns cart-col">
+            <p>Tax: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- tax goes here -->
+            <p></p>
+          </div>
+        </div>
+
+        <div class="row cart-row" id="shipping">
+          <div class="six columns cart-col">
+            <p>Shipping: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- shipping goes here -->
+            <p></p>
+          </div>
+        </div>
+
+        <div class="row cart-row" id="total">
+          <div class="six columns cart-col">
+            <p>Total: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- total goes here -->
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Make one for each camera wanted -->
+        <div class="row" ng-repeat="wantedCamera in cameraCtrl.wantedCameras | orderBy : '-quantity'">
+          <div class="two columns cart-quantity">{{ wantedCamera.quantity }}</div>
+          <div class="ten columns cart-name">{{ wantedCamera.name }}</div>
+        </div>
+
+      </div>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -50,20 +106,30 @@
           <div class="three columns">
             <!-- Add to cart, put image as img src -->
             <div class="row camera-info-row">
-              <a href=""><img src=""></a>
+              <a href=""><img src="" class="camera-image"></a>
             </div>
+            <!-- camera name goes here -->
             <div class="row camera-info-row">
               <p class="camera-name"></p>
             </div>
+            <!-- camera price -->
+            <div class="row camera-info-row">
+              <div class="six columns offset-by-six">
+                <p class="camera-price">Price: </p>
+              </div>
+            </div>
+            <!-- camera rating -->
+            <div class="row camera-info-row">
+              <div class="six columns offset-by-six">
+                <p class="camera-rating">Rating: </p>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="one-half column" style="margin-top: 25%">
-          <h4>Basic Page</h4>
-          <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
         </div>
       </div>
     </div>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
