@@ -1,8 +1,9 @@
 import angular from 'angular';
-import angularMaterialize from 'angular-materialize';
-import CatalogCtrl from './catalog/catalog.controller';
-import CameraCtrl from './cameras/camera.controller';
+import CatalogCtrl from './controllers/catalog.controller';
+import CameraCtrl from './controllers/camera.controller';
 
-angular.module('myApp', [angularMaterialize])
+import ngAnimate from 'angular-animate';
+
+angular.module('snapShop', ['ngAnimate'])
   .controller('CatalogCtrl', CatalogCtrl)
   .controller('CameraCtrl', CameraCtrl);

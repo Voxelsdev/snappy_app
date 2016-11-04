@@ -1,117 +1,165 @@
 <!DOCTYPE html>
-<html ng-app='myApp'>
+<html lang="en" ng-app="snapShop">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SnapShop</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-    <link rel="stylesheet" href="/vendor.css">
-    <link rel="stylesheet" href="/app.css">
-    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
   </head>
-  <body>
+  <body class="noselect" ng-controller="CameraCtrl as cameraCtrl">
 
-    <nav>
-      <a href="">SnapShop</a>
-      <!-- <div class="nav-wrapper #eeeeee grey lighten-3"> -->
-        <!-- <a href="#" class="brand-logo navtext">SnapShop</a> -->
-        <!-- <ul id="nav-mobile" class="right hide-on-med-and-down"> -->
-          <!-- <li><a href="sass.html" class="navtext">Cart</a></li> -->
-          <!-- <li><a href="badges.html" class="navtext">Profile</a></li> -->
-        <!-- </ul> -->
-      <!-- </div> -->
-    </nav>
+    <div class="open-sidebar">
+      <div class="update-sidebar-container" id="update-sidebar-container">!</div>
+      <button id="open-nav">Cart</button>
+    </div>
 
-    <div class="row" ng-init="subtotal = 0" ng-controller="CameraCtrl as cameraCtrl">
-      <div class="col s7">
+    <div class="sidebar">
+      <div class="sidebar-nav">
 
-        <div class="row">
-          <div class="col s8">
-            <div class="input-field col s6" id="searchbar">
-              <input placeholder="Search" type="text" class="validate" ng-model="searchText">
-            </div>
+        <div class="row cart-row" id="cart-title">Cart</div>
+
+        <!-- Make one for each camera wanted -->
+        <div class="row" ng-repeat="wantedCamera in cameraCtrl.wantedCameras | orderBy : '-quantity'">
+          <div class="two columns cart-quantity">{{ wantedCamera.quantity }}</div>
+          <div class="ten columns cart-name">{{ wantedCamera.name }}</div>
+        </div>
+
+        <div class="row cart-row" id="subtotal">
+          <div class="six columns cart-col">
+            <p>Subtotal: </p>
           </div>
-
-          <div class="col s4" ng-controller="CatalogCtrl as catalog">
-            <div class="input-field col s12">
-              <select select class="" ng-model="select.value1" material-select watch>
-                <option ng-repeat="cam in catalog.cameras">{{ cam.name }}</option>
-              </select>
-            </div>
+          <div class="six columns cart-col">
+            <!-- Subtotal goes here -->
+            <p>{{ cameraCtrl.subtotal | currency }}</p>
           </div>
         </div>
 
-        <div class="row" id="camera-container" ng-controller="CatalogCtrl as catalogCtrl">
-          <div class="row" ng-repeat="camera in catalogCtrl.cameras | filter : searchText | orderBy : '-rating'">
-            <div class="col s5 image-container">
-              <div class="card">
-                <div class="card-image">
-                  <img ng-src="{{ camera.image }}">
-                </div>
-              </div>
-            </div>
-            <div class="col s7">
-              <div class="card">
-                <div class="card-content black-text">
-                  <span class="card-title">{{ camera.name }}</span>
-                  <p>Price: {{ camera.price }}</p>
-                  <p>Rating: {{ camera.rating }}</p>
-                </div>
-                <div class="card-action">
-                  <a class="waves-effect waves-light btn" ng-click="cameraCtrl.addToWanted(camera)">Add to Cart</a>
-                </div>
-              </div>
-            </div>
+        <div class="row cart-row" id="tax">
+          <div class="six columns cart-col">
+            <p>Tax: </p>
           </div>
+          <div class="six columns cart-col">
+            <!-- tax goes here -->
+            <p>{{ cameraCtrl.subtotal / 10 | currency }}</p>
+          </div>
+        </div>
 
+        <div class="row cart-row" id="shipping">
+          <div class="six columns cart-col">
+            <p>Shipping: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- shipping goes here -->
+            <p>{{ cameraCtrl.subtotal / 20 | currency }}</p>
+          </div>
+        </div>
+
+        <div class="row cart-row" id="total">
+          <div class="six columns cart-col">
+            <p>Total: </p>
+          </div>
+          <div class="six columns cart-col">
+            <!-- total goes here -->
+            <p>{{ cameraCtrl.subtotal + (cameraCtrl.subtotal / 10) + (cameraCtrl.subtotal / 20) | currency }}</p>
+          </div>
         </div>
 
       </div>
+    </div>
 
-      <div class="col s5">
-        <div class="card #eeeeee grey lighten-3">
-          <div class="card-content black-text">
-            <div class="row">
-              <span class="card-title">Cart</span>
+    <div class="container">
+      <div class="row">
+
+        <nav class="navbar">
+          <div class="row">
+            <div class="three columns">
+              <div class="row nav-row">
+                <p id="title">Snapshop</p>
+              </div>
+              <div class="row nav-row">
+                <p id="desc">For all your camera needs</p>
+              </div>
             </div>
-
-            <!-- Make one for each camera wanted -->
-            <div class="row" ng-repeat="wantedCamera in cameraCtrl.wantedCameras | orderBy : '-quantity'">
-              <div class="col s1">{{ wantedCamera.quantity }}</div>
-              <div class="col s11">{{ wantedCamera.name }}</div>
+            <div class="two columns offset-by-five nav-col">
+              <a class="button nav-button" href="#" id="checkout-nav">Checkout</a>
             </div>
-
-            <div class="row">
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Subtotal</td>
-                    <td>{{ cameraCtrl.subtotal | currency }}</td>
-                  </tr>
-                  <tr>
-                    <td>Tax</td>
-                    <td>{{ cameraCtrl.subtotal / 10 | currency }}</td>
-                  </tr>
-                  <tr>
-                    <td>Total</td>
-                    <td>{{ cameraCtrl.subtotal + (cameraCtrl.subtotal / 10) | currency }}</td>
-                  </tr>
-                </tbody>
-              </table>
-
+            <div class="two columns nav-col">
+              <a class="button nav-button" href="#" id="profile-nav">Profile</a>
             </div>
           </div>
-          <div class="card-action">
-            <a href="checkout.html">Checkout</a>
+        </nav>
+
+        <div class="row" id="first-image">
+          <img class="u-max-full-width" src="./images/camera.jpg">
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <input class="u-full-width" type="text" placeholder="Search" ng-model="searchText">
+          </div>
+          <div class="six columns" ng-controller="CatalogCtrl as catalogCtrl">
+            <select class="u-full-width">
+              <option ng-repeat="currentCam in catalogCtrl.cameras">{{ currentCam.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" ng-controller="CatalogCtrl as catalogCtrl">
+          <!-- Make one of these for each camera -->
+          <div class="three columns camera-container" ng-repeat="camera in catalogCtrl.cameras | filter : searchText | orderBy : '-rating'">
+
+            <div class="row camera-info-row">
+              <a href="" class="camera-image-container" ng-click="cameraCtrl.addToWanted(camera)"><img src="{{ camera.image }}" class="camera-image"></a>
+            </div>
+
+            <div class="row camera-info-row">
+              <p class="camera-name">{{ camera.name }}</p>
+            </div>
+
+            <div class="row camera-info-row">
+              <div class="six columns">
+                <p class="camera-price">Price:</p>
+              </div>
+              <div class="six columns">
+                <p class="camera-price">{{ camera.price | currency }}</p>
+              </div>
+            </div>
+
+            <div class="row camera-info-row">
+              <div class="six columns">
+                <p class="camera-rating">Rating:</p>
+              </div>
+              <div class="six columns">
+                <p class="camera-rating">{{ camera.rating }}</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <footer>
+      <!-- <div class="row">
+          <div class="six columns">
+            <div class="row">
+              <h2>Locations</h2>
+            </div>
+          </div>
+      </div> -->
+    </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./js/index.js"></script>
     <script src="/vendor.js"></script>
     <script src="/app.js"></script>
     <script>require('app');</script>

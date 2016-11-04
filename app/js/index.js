@@ -1,3 +1,0 @@
-(() => {
-  $('select').material_select();
-})();
