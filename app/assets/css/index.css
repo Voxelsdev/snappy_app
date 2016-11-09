@@ -39,6 +39,10 @@ button:hover {
   color: #bbb;
 }
 
+.checkout-container {
+  margin-top: 6.6rem;
+}
+
 .noselect {
   -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -57,6 +61,7 @@ button:hover {
   height: 6.6rem;
   background-color: #eee;
   border-bottom: 1px solid #ddd;
+  z-index: 99;
 }
 
 .nav-col {
@@ -150,11 +155,11 @@ button:hover {
   opacity: 0;
 }
 
-/*.update-sidebar-container.ng-hide {
+.update-sidebar-container.ng-hide {
   opacity: .5;
   animation-name: onetozero;
   animation-duration: 1s;
-}*/
+}
 
 .cart-row {
   padding-top: 32px;

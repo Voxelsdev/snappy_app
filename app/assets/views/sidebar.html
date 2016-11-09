@@ -1,0 +1,53 @@
+<div class="sidebar">
+  <div class="sidebar-nav" ng-controller="CameraCtrl as cameraCtrl">
+
+    <div class="row cart-row" id="cart-title">Cart</div>
+
+    <!-- Make one for each camera wanted -->
+    <div class="row" ng-repeat="wantedCamera in cameraCtrl.wantedCameras() | orderBy : '-quantity'">
+      <div class="two columns cart-quantity">{{ wantedCamera.quantity }}</div>
+      <div class="ten columns cart-name">{{ wantedCamera.name }}</div>
+    </div>
+
+    <div class="row cart-row" id="subtotal">
+      <div class="six columns cart-col">
+        <p>Subtotal: </p>
+      </div>
+      <div class="six columns cart-col">
+        <!-- Subtotal goes here -->
+        <p>{{ cameraCtrl.getSubtotal() | currency }}</p>
+      </div>
+    </div>
+
+    <div class="row cart-row" id="tax">
+      <div class="six columns cart-col">
+        <p>Tax: </p>
+      </div>
+      <div class="six columns cart-col">
+        <!-- tax goes here -->
+        <p>{{ cameraCtrl.getSubtotal() / 10 | currency }}</p>
+      </div>
+    </div>
+
+    <div class="row cart-row" id="shipping">
+      <div class="six columns cart-col">
+        <p>Shipping: </p>
+      </div>
+      <div class="six columns cart-col">
+        <!-- shipping goes here -->
+        <p>{{ cameraCtrl.getSubtotal() / 20 | currency }}</p>
+      </div>
+    </div>
+
+    <div class="row cart-row" id="total">
+      <div class="six columns cart-col">
+        <p>Total: </p>
+      </div>
+
+      <div class="six columns cart-col">
+        <!-- total goes here -->
+        <p>{{ cameraCtrl.getSubtotal() + (cameraCtrl.getSubtotal() / 10) + (cameraCtrl.getSubtotal() / 20) | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,10 +18,4 @@
 
     }
   });
-
-  console.log($('.camera-container'));
-  console.log($('#update-sidebar-container'));
-  // $('.camera-container').click(() => {
-    $('#update-sidebar-container').finish().fadeIn("fast").delay(300).fadeOut("slow");
-  // });
 })();

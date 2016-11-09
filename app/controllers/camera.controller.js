@@ -1,24 +1,21 @@
 class CameraCtrl {
-  constructor() {
-    this.subtotal = 0;
-    this.wantedCameras = [];
+  constructor(cameraSvc) {
+    this.cameraSvc = cameraSvc;
+  }
 
-    this.addToWanted = (camera) => {
-      this.subtotal += camera.price;
-      for (let wantedCamera of this.wantedCameras) {
-        if (wantedCamera.name === camera.name) {
-          wantedCamera.quantity++;
-          return true;
-        }
-      }
+  wantedCameras() {
+    return this.cameraSvc.wantedCameras;
+  }
 
-      this.wantedCameras.push({
-        name: camera.name,
-        price: camera.price,
-        quantity: 1,
-      });
-    }
+  addCamera(camera) {
+    this.cameraSvc.addToWanted(camera);
+  }
+
+  getSubtotal() {
+    return this.cameraSvc.subtotal;
   }
 }
+
+CameraCtrl.$inject = ['cameraService'];
 
 export default CameraCtrl;
