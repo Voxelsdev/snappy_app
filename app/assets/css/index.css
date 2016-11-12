@@ -24,6 +24,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: #666;
 }
 
 button {
@@ -39,8 +40,56 @@ button:hover {
   color: #bbb;
 }
 
+.login, .signup {
+  width: 100%;
+}
+
+.signup-input {
+  width: 100%;
+}
+
+.signup-container {
+  margin-top: 7rem;
+}
+
+.signup-submit {
+  text-align: center;
+}
+
 .checkout-container {
-  margin-top: 6.6rem;
+  margin-top: 7rem;
+}
+
+.checkout-camera-image-container {
+  position: relative;
+  width: 100%;
+}
+
+.checkout-camera-image {
+  padding-top: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.camera-information {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.product-list {
+  margin: 6.6, 0, 0, 0;
+}
+
+.input-field {
+  margin-right: 0;
+}
+
+.customer-info {
+  float: right;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 .noselect {
@@ -78,7 +127,8 @@ button:hover {
 }
 
 .camera-container {
-  border: 1px solid #999;
+  background-color: #666;
+  /*border: 1px solid #999;*/
 }
 
 .camera-container:nth-child(4n+1) {

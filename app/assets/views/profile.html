@@ -1,0 +1,47 @@
+<div class="container" ng-controller="AuthCtrl as authCtrl">
+  <div ng-show="authCtrl.isLoggedIn()"><!-- if the user is logged in, display this -->
+    <div class="row">
+      <div class="six columns">
+        <div class="row order-container"> <!-- ng-repeat orders -->
+          <div class="seven columns">
+            <div class="row">
+              <p class="camera-cart-name"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="six columns">
+        
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="!authCtrl.isLoggedIn()" class="signup-container">
+    <form>
+      <div class="row signup-row">
+        <div class="six columns">
+          <input type="text" class="signup-input" placeholder="First Name:"/>
+        </div>
+        <div class="six columns">
+          <input type="text" class="signup-input" placeholder="Last Name:"/>
+        </div>
+      </div>
+      <div class="row signup-row">
+        <div class="eight columns offset-by-two">
+          <input type="text" class="signup-input" placeholder="Email@email.com"/>
+        </div>
+      </div>
+      <div class="row signup-row">
+        <div class="eight columns offset-by-two">
+          <input type="password" class="signup-input" placeholder="Cr4ftyPassw@rD"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="four columns offset-by-four">
+          <input type="button" class="signup-input signup-submit" value="Make a profile!">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

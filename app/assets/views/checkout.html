@@ -1,53 +1,66 @@
 <div class="checkout-container row">
-  <div class="five columns product-list">
-    <!-- Make one for each type of wanted camera -->
-    <div class="row">
-      <!-- Image here -->
-      <div class="four columns">
+  <div class="five columns product-list" ng-controller="CameraCtrl as cameraCtrl">
+    <div class="row" ng-repeat="cartCam in cameraCtrl.wantedCameras() | orderBy : '-quantity'">
 
+      <div class="four columns camera-information camera-checkout-image-container">
+        <div class="checkout-camera-image" style="background-image: url({{ cartCam.image }})"></div>
       </div>
-      <!-- name / desc here -->
-      <div class="four columns">
+
+      <div class="four columns no-margin" camera-information>
         <div class="row">
-          <p class="camera-name"></p>
+          <p class="camera-name">{{ cartCam.name }}</p>
         </div>
 
         <div class="row">
-          <p class="camera-price"></p>
+          <p class="camera-price">{{ cartCam.price }}</p>
         </div>
       </div>
 
-      <!-- quantity here -->
-      <div class="four columns">
-        <p class="camera-quantity">
-
-        </p>
+      <div class="four columns camera-information no-margin">
+        <p class="camera-quantity">{{ cartCam.quantity }}</p>
       </div>
     </div>
   </div>
-  <div class="seven columns">
-    <!-- name -->
+
+  <div class="seven columns customer-info" ng-controller="AuthCtrl as authCtrl">
     <div class="row">
-      <input class="u-full-width" type="email" placeholder="" id="exampleEmailInput">
+      <div class="six columns">
+        <input class="u-full-width" type="email" placeholder="John">
+      </div>
+
+      <div class="six columns">
+        <input class="u-full-width" type="email" placeholder="Appleseed">
+      </div>
     </div>
 
     <div class="row">
-      <input class="u-full-width" type="phone" placeholder="" id="exampleEmailInput">
+      <input class="u-full-width" type="email" placeholder="email@example.com" ng-model="email">
     </div>
 
-    <!-- email -->
     <div class="row">
-      <input class="u-full-width" type="text" placeholder="" id="exampleEmailInput">
+      <input class="u-full-width" type="text" placeholder="Address line 1">
     </div>
 
-    <!-- pickup date -->
     <div class="row">
-      <input class="u-full-width" type="text" placeholder="" id="exampleEmailInput">
+      <input class="u-full-width" type="text" placeholder="Address line 2">
     </div>
 
-    <!-- optional info -->
     <div class="row">
-      <input class="u-full-width" type="text" placeholder="" id="exampleEmailInput">
+      <input class="u-full-width" type="date" placeholder="Pickup Date">
+    </div>
+
+    <div class="row" ng-show="!authCtrl.isLoggedIn()">
+      <div class="row">
+        <input class="u-full-width" type="text" placeholder="Password" ng-model="password">
+      </div>
+
+      <div class="four columns offset-by-four">
+        <input type="button" class="login" value="Login" ng-click="authCtrl.login(email, password)" />
+      </div>
+
+      <div class="four columns">
+        <input type="button" class="signup" value="Signup" ng-click="" />
+      </div>
     </div>
   </div>
 </div>

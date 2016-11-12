@@ -13,11 +13,11 @@ class CameraService {
       }
     }
 
-    this.wantedCameras.push({
-      name: camera.name,
-      price: camera.price,
-      quantity: 1,
-    });
+    const newCam = camera;
+
+    newCam.quantity = 1;
+
+    this.wantedCameras.push(newCam);
   }
 
   getWantedCameras() {
