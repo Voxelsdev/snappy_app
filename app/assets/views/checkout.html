@@ -25,16 +25,16 @@
   <div class="seven columns customer-info" ng-controller="AuthCtrl as authCtrl">
     <div class="row">
       <div class="six columns">
-        <input class="u-full-width" type="email" placeholder="John" ng-model="firstname">
+        <input class="u-full-width" type="text" placeholder="John" ng-model="authCtrl.firstName">
       </div>
 
       <div class="six columns">
-        <input class="u-full-width" type="email" placeholder="Appleseed" ng-model="lastname">
+        <input class="u-full-width" type="text" placeholder="Appleseed" ng-model="authCtrl.lastName">
       </div>
     </div>
 
     <div class="row">
-      <input class="u-full-width" type="email" placeholder="email@example.com" ng-model="email">
+      <input class="u-full-width" type="email" placeholder="email@example.com" ng-model="authCtrl.email">
     </div>
 
     <div class="row">
@@ -49,17 +49,22 @@
       <input class="u-full-width" type="date" placeholder="Pickup Date">
     </div>
 
-    <div class="row" ng-show="!authCtrl.isLoggedIn()" ng-controller="SignupCtrl as signupCtrl">
+    <div class="row" ng-show="!authCtrl.isLoggedIn()">
       <div class="row">
-        <input class="u-full-width" type="text" placeholder="Password" ng-model="password">
+        <input class="u-full-width" type="password" placeholder="Password" ng-model="authCtrl.password">
       </div>
 
       <div class="four columns offset-by-four">
-        <input type="button" class="login" value="Login" ng-click="authCtrl.login(email, password)" />
+        <input type="button" class="login" value="Login" ng-click="authCtrl.login()" />
       </div>
 
       <div class="four columns">
-        <input type="button" class="signup" value="Signup" ng-click="signupCtrl.signup(firstname, lastname, email, password)" />
+        <input type="button" class="signup" value="Signup" ng-click="authCtrl.signup()" />
+      </div>
+    </div>
+    <div class="row" ng-show="authCtrl.isLoggedin()">
+      <div class="eight columns offset-by-two">
+        <input type="button" class="place-order" value="Place Order" />
       </div>
     </div>
   </div>

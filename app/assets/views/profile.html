@@ -12,12 +12,12 @@
       </div>
 
       <div class="six columns">
-        
+
       </div>
     </div>
   </div>
 
-  <div ng-show="!authCtrl.isLoggedIn()" class="signup-container">
+  <div ng-show="authCtrl.isLoggedIn()" class="signup-container">
     <form>
       <div class="row signup-row">
         <div class="six columns">
@@ -43,5 +43,20 @@
         </div>
       </div>
     </form>
+  </div>
+  <div ng-hide="authCtrl.isLoggedIn()">
+    <div class="row profile-container">
+      <div class="four columns">
+
+        <div class="row" ng-repeat="order in orderCtrl.orders()">
+          <div class="eight columns">
+            <div class="row order-date">
+              
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class AuthService {
   constructor($http) {
     this.$http = $http;
-    this.loggedIn = !this.$http.get('/api/token')
+    this.loggedOut = !this.$http.get('/api/token')
       .then((res) => {
         return res.data;
       })
@@ -11,12 +11,13 @@ class AuthService {
   }
 
   isLoggedIn() {
-    return this.loggedIn;
+    return this.loggedOut;
   }
 
   login(email, password) {
+    console.log(this.loggedOut);
     this.$http.post('/api/token', { email, password }).then(() => {
-      this.loggedIn = true;
+      this.loggedOut = false;
     })
     .catch((err) => {
       throw err;
@@ -25,12 +26,35 @@ class AuthService {
 
   logout() {
     this.$http.delete('/api/token').then(() => {
-      this.loggedIn = false;
+      this.loggedOut = true;
     })
     .catch((err) => {
       throw err;
     });
   }
+
+  signup(user) {
+    if (!this.loggedOut) {
+      this.$http.post('/api/users', user)
+      .then(() => {
+        this.$http.post('/api/token', { email, password})
+        .then(() => {
+          // user is now signed up and logged in
+          this.loggedOut = false;
+        })
+        .catch((err) => {
+          console.error(err);
+          return err;
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        return err;
+      });
+    }
+  }
 }
+
+AuthService.$inject = ['$http', '$state'];
 
 export default AuthService;

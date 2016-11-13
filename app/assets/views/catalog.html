@@ -15,7 +15,7 @@
       </div>
       <div class="six columns" ng-controller="CatalogCtrl as catalogCtrl">
         <select class="u-full-width">
-          <option ng-repeat="camera in catalogCtrl.cameras" ng-model="searchText">{{ camera.name }}</option>
+          <option ng-repeat="camera in catalogCtrl.getCameras()" ng-model="searchText">{{ camera.name }}</option>
         </select>
       </div>
     </div>
