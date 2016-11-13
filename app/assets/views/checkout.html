@@ -25,11 +25,11 @@
   <div class="seven columns customer-info" ng-controller="AuthCtrl as authCtrl">
     <div class="row">
       <div class="six columns">
-        <input class="u-full-width" type="email" placeholder="John">
+        <input class="u-full-width" type="email" placeholder="John" ng-model="firstname">
       </div>
 
       <div class="six columns">
-        <input class="u-full-width" type="email" placeholder="Appleseed">
+        <input class="u-full-width" type="email" placeholder="Appleseed" ng-model="lastname">
       </div>
     </div>
 
@@ -49,7 +49,7 @@
       <input class="u-full-width" type="date" placeholder="Pickup Date">
     </div>
 
-    <div class="row" ng-show="!authCtrl.isLoggedIn()">
+    <div class="row" ng-show="!authCtrl.isLoggedIn()" ng-controller="SignupCtrl as signupCtrl">
       <div class="row">
         <input class="u-full-width" type="text" placeholder="Password" ng-model="password">
       </div>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="four columns">
-        <input type="button" class="signup" value="Signup" ng-click="" />
+        <input type="button" class="signup" value="Signup" ng-click="signupCtrl.signup(firstname, lastname, email, password)" />
       </div>
     </div>
   </div>

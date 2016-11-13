@@ -7,15 +7,24 @@ import CameraService from './services/camera.service';
 import AuthCtrl from './controllers/auth.controller';
 import AuthService from './services/auth.service';
 
+import SignupCtrl from './controllers/signup.controller';
+import SignupService from './services/signup.service';
+
 import ngAnimate from 'angular-animate';
 import uiRouter from 'angular-ui-router';
 
 angular.module('snapShop', ['ngAnimate', uiRouter])
   .controller('CatalogCtrl', CatalogCtrl)
+
   .controller('CameraCtrl', CameraCtrl)
   .service('cameraService', CameraService)
+
   .controller('AuthCtrl', AuthCtrl)
   .service('authService', AuthService)
+
+  .controller('SignupCtrl', SignupCtrl)
+  .service('signupService', SignupService)
+
   .config(['$stateProvider', ($stateProvider) => {
     $stateProvider
       .state('catalog', {

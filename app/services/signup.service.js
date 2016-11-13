@@ -1,4 +1,4 @@
-class LoginService {
+class SignupService {
   constructor($http) {
     this.$http = $http;
     this.loggedIn = !this.$http.get('/api/token')
@@ -18,7 +18,7 @@ class LoginService {
         this.$http.post('/api/token', { email, password})
         .then(() => {
           // user is now created and logged in.
-          return 1;
+          // return 1;
         })
         .catch((err) => {
           console.error(err);
@@ -33,4 +33,4 @@ class LoginService {
   }
 }
 
-export default LoginService;
+export default SignupService;
