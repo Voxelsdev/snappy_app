@@ -3,7 +3,7 @@ class CatalogCtrl {
     this.cameraList = catalogSvc;
   }
 
-  cameras () {
+  cameras() {
     return this.cameraList.getCameras();
   }
 };

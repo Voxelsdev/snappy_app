@@ -15,7 +15,7 @@
       </div>
       <div class="six columns" ng-controller="CatalogCtrl as catalogCtrl">
         <select class="u-full-width">
-          <option ng-repeat="camera in catalogCtrl.getCameras()" ng-model="searchText">{{ camera.name }}</option>
+          <option ng-repeat="camera in catalogCtrl.cameras()" ng-model="searchText">{{ camera.name }}</option>
         </select>
       </div>
     </div>
@@ -76,7 +76,7 @@
 
     <div class="row" ng-controller="CatalogCtrl as catalogCtrl">
       <!-- Make one of these for each camera -->
-      <div class="three columns camera-container" ng-repeat="camera in catalogCtrl.cameras | filter : searchText | orderBy : '-rating'">
+      <div class="three columns camera-container" ng-repeat="camera in catalogCtrl.cameras() | filter : searchText | orderBy : '-rating'">
 
         <div class="row camera-info-row" ng-controller="CameraCtrl as cameraCtrl">
           <a href="" class="camera-image-container" ng-click="cameraCtrl.addCamera(camera)"><img src="{{ camera.image }}" class="camera-image"></a>
