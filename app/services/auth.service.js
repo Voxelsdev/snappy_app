@@ -1,21 +1,22 @@
 class AuthService {
   constructor($http) {
     this.$http = $http;
-    this.loggedOut = !this.$http.get('/api/token')
+    this.loggedOut =  true;
+
+    this.$http.get('/api/token')
       .then((res) => {
-        return res.data;
+        this.loggedOut = !res.data;
       })
       .catch((err) => {
         throw err;
       });
   }
 
-  isLoggedIn() {
+  isLoggedOut() {
     return this.loggedOut;
   }
 
   login(email, password) {
-    console.log(this.loggedOut);
     this.$http.post('/api/token', { email, password }).then(() => {
       this.loggedOut = false;
     })

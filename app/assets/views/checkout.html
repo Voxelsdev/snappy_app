@@ -49,7 +49,7 @@
       <input class="u-full-width" type="date" placeholder="Pickup Date">
     </div>
 
-    <div class="row" ng-show="!authCtrl.isLoggedIn()">
+    <div class="row" ng-show="authCtrl.isLoggedOut()">
       <div class="row">
         <input class="u-full-width" type="password" placeholder="Password" ng-model="authCtrl.password">
       </div>
@@ -62,9 +62,12 @@
         <input type="button" class="signup" value="Signup" ng-click="authCtrl.signup()" />
       </div>
     </div>
-    <div class="row" ng-show="authCtrl.isLoggedin()">
-      <div class="eight columns offset-by-two">
+    <div class="row" ng-hide="authCtrl.isLoggedOut()">
+      <div class="six columns">
         <input type="button" class="place-order" value="Place Order" />
+      </div>
+      <div class="six columns">
+        <input type="button" class="" value="Logout" ng-click="authCtrl.logout()" />
       </div>
     </div>
   </div>

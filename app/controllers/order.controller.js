@@ -3,6 +3,10 @@ class OrderCtrl {
     this.orderSvc = orderSvc;
   }
 
+  placeOrder() {
+    
+  }
+
   orders() {
     return this.orderSvc.orders();
   }

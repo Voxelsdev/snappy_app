@@ -1,5 +1,5 @@
 <div class="container" ng-controller="AuthCtrl as authCtrl">
-  <div ng-show="authCtrl.isLoggedIn()"><!-- if the user is logged in, display this -->
+  <div ng-show="authCtrl.isLoggedOut()"><!-- if the user is logged in, display this -->
     <div class="row">
       <div class="six columns">
         <div class="row order-container"> <!-- ng-repeat orders -->
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div ng-show="authCtrl.isLoggedIn()" class="signup-container">
+  <div ng-show="authCtrl.isLoggedOut()" class="signup-container">
     <form>
       <div class="row signup-row">
         <div class="six columns">
@@ -44,7 +44,7 @@
       </div>
     </form>
   </div>
-  <div ng-hide="authCtrl.isLoggedIn()">
+  <div ng-hide="authCtrl.isLoggedOut()">
     <div class="row profile-container">
       <div class="four columns">
 

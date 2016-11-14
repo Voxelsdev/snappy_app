@@ -7,16 +7,17 @@ class AuthCtrl {
     this.password = '';
   }
 
-  isLoggedIn() {
-    return this.authSvc.isLoggedIn();
+  isLoggedOut() {
+    console.log(`Logged out: ${this.authSvc.loggedOut}`);
+    return this.authSvc.isLoggedOut();
   }
 
   login() {
-    return this.authSvc.login(this.email, this.password);
+    this.authSvc.login(this.email, this.password);
   }
 
   logout() {
-    return this.authSvc.logout();
+    this.authSvc.logout();
   }
 
   signup() {
